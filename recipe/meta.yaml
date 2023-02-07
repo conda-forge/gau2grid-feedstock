@@ -35,8 +35,6 @@ test:
     # Inspect linkage
     - ldd -v $PREFIX/lib/libgg$SHLIB_EXT                                    # [linux]
     - otool -L $PREFIX/lib/libgg$SHLIB_EXT                                  # [osx]
-    - conda inspect linkages --show-files --groupby=dependency gau2grid     # [unix]
-    - conda inspect objects -p $PREFIX $PKG_NAME                            # [osx]
     # Verify accessories
     - test -f $PREFIX/include/gau2grid/gau2grid.h                           # [unix]
     - if not exist %PREFIX%\\Library\\include\\gau2grid\\gau2grid.h exit 1  # [win]
