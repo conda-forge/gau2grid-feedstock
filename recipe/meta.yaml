@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 2
+  number: 3
   run_exports:
     - {{ pin_subpackage('gau2grid', max_pin='x') }}
 
@@ -19,6 +19,7 @@ requirements:
   build:
     - cmake >=3.0
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - ninja  # [win]
     - make  # [unix]
     #  numpy and python in build, not host, since used as build tools and to avoid python_abi dependency
