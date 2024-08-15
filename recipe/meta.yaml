@@ -34,7 +34,7 @@ test:
     - if not exist %PREFIX%\\Library\\lib\\gg.lib exit 1                    # [win]
     - if not exist %PREFIX%\\Library\\bin\\gg.dll exit 1                    # [win]
     # Inspect linkage
-    - ldd -v $PREFIX/lib/libgg$SHLIB_EXT                                    # [linux]
+    - ldd -v $PREFIX/lib/libgg$SHLIB_EXT                                    # [linux and build_platform == target_platform]
     - otool -L $PREFIX/lib/libgg$SHLIB_EXT                                  # [osx]
     # Verify accessories
     - test -f $PREFIX/include/gau2grid/gau2grid.h                           # [unix]
