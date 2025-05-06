@@ -1,30 +1,31 @@
-if [ "$(uname)" == "Darwin" ]; then
+if [[ "$target_platform" == osx-* ]]; then
+    ARCH_ARGS=""
     ALLOPTS="${CFLAGS}"
 fi
-if [ "$(uname)" == "Linux" ]; then
+if [[ "$target_platform" == linux-* ]]; then
+    ARCH_ARGS=""
     # revisit when c-f moves to gcc8
     # * checked Dec 2020 at gcc9 and define still needed
     ALLOPTS="${CFLAGS} -D__GG_NO_PRAGMA"
 fi
 
-${BUILD_PREFIX}/bin/cmake \
-    -H${SRC_DIR} \
-    -Bbuild \
-    -DCMAKE_INSTALL_PREFIX=${PREFIX} \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_C_COMPILER=${CC} \
-    -DCMAKE_C_FLAGS="${ALLOPTS}" \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DINSTALL_PYMOD=OFF \
-    -DBUILD_SHARED_LIBS=ON \
-    -DENABLE_XHOST=OFF \
-    -DPYTHON_EXECUTABLE=${BUILD_PREFIX}/bin/python \
-    -DMAX_AM=8
+cmake ${CMAKE_ARGS} ${ARCH_ARGS} \
+    -S ${SRC_DIR} \
+    -B build \
+    -G Ninja \
+    -D CMAKE_INSTALL_PREFIX=${PREFIX} \
+    -D CMAKE_BUILD_TYPE=Release \
+    -D CMAKE_C_COMPILER=${CC} \
+    -D CMAKE_C_FLAGS="${ALLOPTS}" \
+    -D CMAKE_INSTALL_LIBDIR=lib \
+    -D INSTALL_PYMOD=OFF \
+    -D BUILD_SHARED_LIBS=ON \
+    -D ENABLE_XHOST=OFF \
+    -D PYTHON_EXECUTABLE=${BUILD_PREFIX}/bin/python \
+    -D MAX_AM=8
 
-cd build
-make -j${CPU_COUNT}
+cmake --build build --target install
 
-make install
 
 # tests outside build phase
 
