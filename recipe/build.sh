@@ -6,7 +6,9 @@ if [[ "$target_platform" == linux-* ]]; then
     ARCH_ARGS=""
     # revisit when c-f moves to gcc8
     # * checked Dec 2020 at gcc9 and define still needed
-    ALLOPTS="${CFLAGS} -D__GG_NO_PRAGMA"
+    #ALLOPTS="${CFLAGS} -D__GG_NO_PRAGMA"
+    # gcc13
+    ALLOPTS="${CFLAGS}"
 fi
 
 cmake ${CMAKE_ARGS} ${ARCH_ARGS} \
