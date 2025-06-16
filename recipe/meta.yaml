@@ -1,30 +1,29 @@
 {% set name = "gau2grid" %}
-{% set version = "2.0.7" %}
-{% set sha256 = "66e7205646e1e3685e5dd4eea8281fc92b0b8b45ce97ae24b72a09e15a3fd62f" %}
+{% set version = "2.0.8" %}
+{% set sha256 = "c5f445344a465c1d9afc6516544dc4a2fba588af7ba0f1ac1a6b538260f0cd96" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/dgasmith/{{ name }}/archive/v{{ version }}.tar.gz
+  url: https://github.com/psi4/{{ name }}/archive/v{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
-  number: 4
+  number: 0
   run_exports:
     - {{ pin_subpackage('gau2grid', max_pin='x') }}
 
 requirements:
   build:
-    - cmake >=3.0
+    - cmake
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
-    - ninja  # [win]
-    - make  # [unix]
+    - ninja
     #  numpy and python in build, not host, since used as build tools and to avoid python_abi dependency
     - numpy
-    - python 3.8.*
+    - python 3.12.*
 
 test:
   commands:
