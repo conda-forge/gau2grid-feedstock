@@ -8,12 +8,12 @@ package:
 
 source:
   #url: https://github.com/dgasmith/{{ name }}/archive/v{{ version }}.tar.gz
-  url: https://github.com/LecrisUT/gau2grid/archive/cmake/4.0.tar.gz
-  sha256: e0d8e3fa435aff17d7d2a5b8c4fa7b0ee23a1cc9de05f041c66da5296e5d1514
+  url: https://github.com/dgasmith/{{ name }}/archive/c2d78e0.tar.gz
+  sha256: 69e62477d0cbf33a312d4872af6a54873582a34f52c34570eeccec46cda457c6
   #sha256: {{ sha256 }}
 
 build:
-  number: 4
+  number: 5
   run_exports:
     - {{ pin_subpackage('gau2grid', max_pin='x') }}
 
