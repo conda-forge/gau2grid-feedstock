@@ -1,6 +1,6 @@
 {% set name = "gau2grid" %}
-{% set version = "2.0.8" %}
-{% set sha256 = "c5f445344a465c1d9afc6516544dc4a2fba588af7ba0f1ac1a6b538260f0cd96" %}
+{% set version = "2.0.9" %}
+{% set sha256 = "7879bdddf3a52cd2a051086215977822bbe8d1af927fcf5b4fb0256a38b8a76c" %}
 
 package:
   name: {{ name|lower }}
@@ -52,11 +52,7 @@ about:
   license_family: BSD
   summary: "D.G.A. Smith's C library for fast computation of a Gaussian and its derivative on a grid"
   description: >
-    A collocation code for computing gaussians on a grid of the form:
-    ```
-    out_Lp = x^l y^m z^n \sum_i coeff_i e^(exponent_i * (|center - p|)^2)
-    ```
-    , where the returned matrix dimension are the angular momentum (L) by number of requested points (p).
+    A collocation code for computing gaussians on a grid of the form: ``` out_Lp = x^l y^m z^n \sum_i coeff_i e^(exponent_i * (|center - p|)^2) ``` , where the returned matrix dimension are the angular momentum (L) by number of requested points (p).
 
 extra:
   recipe-maintainers:
